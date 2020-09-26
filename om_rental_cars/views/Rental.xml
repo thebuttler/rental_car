@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!--form for adding the tree and display in the app-->
+    <record id="cardetails_tree" model="ir.ui.view">
+            <field name="name">rental.cardetails.tree</field>
+            <field name="model">rental.cardetails</field>
+            <field name="arch" type="xml">
+                <tree string="CarDetails">
+                    <field name="car_seq"/>
+                    <field name="car_brand"/>
+                    <field name="car_model"/>
+                    <field name="car_color"/>
+                    <field name="car_year"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--Specific search values for brand and year-->
+    <record id="rental_cardetails_search" model="ir.ui.view">
+            <field name="name">rental.cardetails.search</field>
+            <field name="model">rental.cardetails</field>
+            <field name="arch" type="xml">
+                <search string="Search Cars by brand and year">
+                    <group>
+                        <filter string="Model" name="model" context="{'group_by':'car_model'}"/>
+                        <filter string="Year" name="year" context="{'group_by':'car_year'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <!--form for adding the details for a car in a form-->
+    <record id="cardetails_form" model="ir.ui.view">
+            <field name="name">rental.cardetails.form</field>
+            <field name="model">rental.cardetails</field>
+            <field name="arch" type="xml">
+                <form string="CarDetails">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="car_seq" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                            <group string="Add a car to the inventory">
+                                <div>
+                                    <group col="2">
+                                        <field name="car_brand"/>
+                                        <field name="car_model"/>
+                                        <field name="car_year"/>
+                                        <field name="car_color"/>
+                                        <field name="car_type"/>
+                                        <field name="car_image"/>
+                                    </group>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!--action for adding the details for a car-->
+    <record id="action_cardetails" model="ir.actions.act_window">
+        <field name="name">Cars available for lease</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rental.cardetails</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new car for rental
+          </p>
+        </field>
+    </record>
+
+
+    <menuitem id="Rental_root" name="Rental" sequence="0"/>
+    <menuitem id="Rental_RentalCars" name="Add Cars" parent="Rental_root" action="action_cardetails" sequence="1"/>
+
+
+</odoo>

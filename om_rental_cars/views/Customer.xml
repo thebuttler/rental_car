@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--form for adding the tree and display in the app-->
+    <record id="customerdetails_tree" model="ir.ui.view">
+            <field name="name">rental.customerdetails.tree</field>
+            <field name="model">rental.customerdetails</field>
+            <field name="arch" type="xml">
+                <tree string="CustomerDetails">
+                    <field name="customer_seq"/>
+                    <field name="customer_firstname"/>
+                    <field name="customer_lastname"/>
+                    <field name="customer_email"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--form for adding the details of the clients in a form-->
+    <record id="customerdetails_form" model="ir.ui.view">
+            <field name="name">rental.customerdetails.form</field>
+            <field name="model">rental.customerdetails</field>
+            <field name="arch" type="xml">
+                <form string="CustomerDetails">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="customer_seq" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="customer_firstname"/>
+                            <field name="customer_lastname"/>
+                            <field name="customer_phone"/>
+                            <field name="customer_email"/>
+                            <field name="customer_address"/>
+                            <field name="customer_image"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!--action for adding the client list details-->
+    <record id="action_customerdetails" model="ir.actions.act_window">
+        <field name="name">Create Customer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rental.customerdetails</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Register Clients for renting the cars
+          </p>
+        </field>
+    </record>
+
+
+    <menuitem id="Rental_CustomerDetails" name="Client Details" parent="Rental_root" action="action_customerdetails" sequence="2"/>
+
+</odoo>

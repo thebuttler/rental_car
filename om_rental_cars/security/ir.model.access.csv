@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rental_cardetails,access.rental.cardetails,model_rental_cardetails,,1,1,1,1
+access_rental_customerdetails,access_rental_customerdetails,model_rental_customerdetails,,1,1,1,1
+access_service_carcontract,access_service_carcontract,model_service_carcontract,,1,1,1,1
